@@ -1,0 +1,43 @@
+{
+  "name": "prontuario",
+  "authors": [
+    "rafael.schlemper <rafael.schlemper@gennera.com.br>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-i18n": "^1.5.8",
+    "angular-cookies": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-resource": "^1.5.8",
+    "angular-sanitize": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "angular-bootstrap": "^2.0.0",
+    "angular-translate": "^2.11.1",
+    "angular-translate-loader-static-files": "^2.11.1",
+    "angular-translate-storage-cookie": "^2.11.1",
+    "angular-translate-storage-local": "^2.11.1",
+    "angular-ui-mask": "^1.8.7",
+    "angular-input-masks": "^2.4.0",
+    "font-awesome": "~4.6.3",
+    "animate.css": "~3.5.2",
+    "bootstrap": "~3.3.7",
+    "normalize-css": "^4.2.0",
+    "jquery": "~3.1.0",
+    "jquery-ui": "^1.12.0",
+    "ngstorage": "^0.3.10",
+    "moment": "^2.15.1",
+    "componentes": "raschlemper/componentes"
+  }
+}

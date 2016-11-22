@@ -1,0 +1,26 @@
+{
+  "name": "treinamento",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "engines": {
+    "node": "*",
+    "npm": "*"
+  },
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.3.3",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "lodash": "^3.10.1",
+    "morgan": "^1.6.1",
+    "serve-favicon": "^2.3.0",
+    "method-override": "^2.3.5",
+    "cookie-parser": "^1.4.0",
+    "ejs": "^2.3.4",
+    "formidable": "^1.0.17",
+    "mongoose": "^4.5.7"
+  }
+}
