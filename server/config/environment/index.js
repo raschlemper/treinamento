@@ -18,8 +18,7 @@ var config = {
     images: path.normalize(__dirname + '/../../../images')
   },
   port: process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-  ip: process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-  secrets: 'supersecret'
+  ip: process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
 };
 
 module.exports = _.merge(config, require('./' + process.env.NODE_ENV + '.js') || {});
