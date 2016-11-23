@@ -12,7 +12,8 @@ body {
  */
  .container-login > img {
   position: fixed; 
-  top:0; left: 0; 
+  top:0; 
+  left: 0; 
   width: 100%; 
   height: 100%;
   opacity: 0.4; 
@@ -203,6 +204,9 @@ body {
  */
  .fa-spc {
   padding-right: 25px;
+ }
+ .fa-spc-sm {
+  padding-right: 5px;
  }
 
  .img-language {
