@@ -1,9 +1,12 @@
 'use strict';
 
-app.controller('AuthController', ['$rootScope', '$scope', '$state', 'AuthService',
-  function ($rootScope, $scope, $state, AuthService) {
+app.controller('AuthController', ['$rootScope', '$scope', '$state', '$stateParams', 'AuthService',
+  function ($rootScope, $scope, $state, $stateParams, AuthService) {
 
 	var init = function () {
+		if($stateParams.strategy == 'google') {
+			loginGoogle();
+		}
 	};
 
 	$scope.login = function(username, password) {
@@ -16,7 +19,7 @@ app.controller('AuthController', ['$rootScope', '$scope', '$state', 'AuthService
 			});
 	};
 
-	$scope.loginGoogle = function() {
+	var loginGoogle = function() {
 		AuthService.loginGoogle()
 			.then(function(data) {
 				setReturn(data);

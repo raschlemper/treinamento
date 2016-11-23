@@ -44,6 +44,10 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
         url: '/login',
         templateUrl: 'partials/auth/login.html',
         controller: 'AuthController'
+      })
+      .state('auth.google', {
+        url: '/login/:strategy',
+        controller: 'AuthController'
       });
 
   }])
