@@ -15,7 +15,7 @@ app.run(['$rootScope', 'AuthService', 'RouteService',
     };
 
     var hasToken = function(toState, toParams) {
-        if(toState && toState.name === "app.token") { 
+        if(toState && toState.name === "auth.token") { 
             $rootScope.goToIndex(); 
         }
     };

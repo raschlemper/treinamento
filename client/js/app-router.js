@@ -15,13 +15,6 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
         templateUrl: 'partials/app/app.html'
       })
 
-      /*
-       * Token
-       */
-      .state('app.token', {
-        url: '/token/:token'
-      })
-
       /**
        * Java
        */
@@ -39,22 +32,22 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
         url: '/introduction',
         templateUrl: 'partials/app/java/introduction.html',
         controller: 'JavaController'
-      })
+      })      
 
-      /**
-       * Auth
+      /*
+       * Authentication
        */
       .state('auth', {
-        templateUrl: 'partials/auth/auth.html'
+        abstract: true,
+        url: '/auth',
+        template: '<div ui-view></div>'
       })
-      .state('auth.login', {
-        url: '/login',
-        templateUrl: 'partials/auth/login.html',
-        controller: 'AuthController'
-      })
-      .state('auth.google', {
-        url: '/login/:strategy',
-        controller: 'AuthController'
+
+      /*
+       * Token
+       */
+      .state('auth.token', {
+        url: '/token/:token'
       });
 
   }])
