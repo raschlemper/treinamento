@@ -3,9 +3,9 @@ app.run(['$rootScope', 'AuthService', 'RouteService',
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
         console.log(toState, toParams);
-        setToken(toState, toParams);
-        hasToken(toState, toParams);
-        authenticated(toState, toParams);
+        setToken(event, toState, toParams);
+        hasToken(event, toState, toParams);
+        authenticated(event, toState, toParams);
     });
 
     var setToken = function(event, toState, toParams) {

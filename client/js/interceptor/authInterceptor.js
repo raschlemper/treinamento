@@ -18,7 +18,7 @@ app.factory('AuthInterceptor', ['$rootScope', '$q', '$injector',
 	      	if (rejection.status === 401) {
     			var AuthService = $injector.get('AuthService');
 		        AuthService.createToken(null);
-	        	$rootScope.goToLogin($event);
+	        	$rootScope.goToLogin();
 			}
 			return $q.reject(rejection);
 		}
