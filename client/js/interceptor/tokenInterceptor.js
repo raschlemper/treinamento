@@ -1,7 +1,7 @@
 'use strict';
 
-app.factory('TokenInterceptor', ['$rootScope', '$localStorage', '$injector', 
-  function ($rootScope, $localStorage, $injector) {
+app.factory('TokenInterceptor', ['$rootScope', '$q', '$localStorage', '$injector', 
+  function ($rootScope, $q, $localStorage, $injector) {
   
   return {
 
