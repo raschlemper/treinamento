@@ -28,6 +28,7 @@ app.run(['$rootScope', 'AuthService', 'RouteService',
                     $rootScope.goTo(toState, toParams); 
                 })
                 .catch(function(e) { 
+                    event.preventDefault();
                     $rootScope.goToLogin();                   
                 });
         }        
