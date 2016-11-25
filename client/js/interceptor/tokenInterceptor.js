@@ -5,14 +5,10 @@ app.factory('TokenInterceptor', ['$rootScope', '$localStorage', '$location', '$i
   
   return {
 
-    request: function (config) {
-      var AuthService = $injector.get('AuthService');      
-      var token = $location.search().token || AuthService.getToken();
-      if (token) {
-        delete $localStorage.token;
-        $location.search('token', undefined);
-        AuthService.createToken(token);
-        config.headers.Authorization = token;
+    request: function (config) {     
+      var AuthService = $injector.get('AuthService'); 
+      if (AuthService.getToken()) {
+        config.headers.Authorization = AuthService.getToken();
       }
       return config;
     },

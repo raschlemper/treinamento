@@ -5,19 +5,20 @@ app.run(['$rootScope', 'AuthService', 'RouteService',
         console.log(toState, toParams);
         event.preventDefault(); 
         setToken(event, toState, toParams);
+        removeToken(event, toState, toParams);
         authenticated(event, toState, toParams);
     });
 
     var setToken = function(event, toState, toParams) {
-        if(toParams && toParams.token) { 
+        var token = $location.search().token || AuthService.getToken();
+        if (token) {
+            delete $localStorage.token;
             AuthService.createToken(toParams.token);
         }
     };
 
-    var hasToken = function(event, toState, toParams) {
-        if(toState && toState.name === "auth.token") { 
-            $rootScope.goToIndex(); 
-        }
+    var removeToken = function(event, toState, toParams) {  
+        $location.search('token', undefined);
     };
 
     var authenticated = function(event, toState, toParams) {
