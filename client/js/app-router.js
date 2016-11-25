@@ -38,15 +38,9 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Authentication
        */
       .state('auth', {
+        abstract: true,
         url: '/auth',
         templateUrl: 'partials/auth/auth.html'
-      })
-
-      /*
-       * Token
-       */
-      .state('auth.token', {
-        url: '/token/:token'
       })
 
       /*
