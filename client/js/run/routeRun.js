@@ -5,12 +5,12 @@ app.run(['$rootScope', '$state', function ($rootScope, $state) {
     };
 
     $rootScope.goToLogin = function(event) {
-    	  if(event) { event.preventDefault(); }
+    	  // if(event) { event.preventDefault(); }
         $rootScope.goTo('auth.login', null);
     };
 
     $rootScope.goToIndex = function(event) {
-    	  if(event) { event.preventDefault(); }
+    	  // if(event) { event.preventDefault(); }
         $rootScope.goTo('app.java.start', null);
     };
 

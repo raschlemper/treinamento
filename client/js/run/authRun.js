@@ -15,12 +15,14 @@ app.run(['$rootScope', 'AuthService', 'RouteService',
     };
 
     var hasToken = function(event, toState, toParams) {
+        event.preventDefault(); 
         if(toState && toState.name === "auth.token") { 
             $rootScope.goToIndex(event); 
         }
     };
 
     var authenticated = function(event, toState, toParams) {
+        event.preventDefault(); 
         if(!RouteService.isPublic(toState.name)) {
             AuthService.isAuthenticated(AuthService.getToken())
                 .then(function(data) {
