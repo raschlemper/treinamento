@@ -3,7 +3,6 @@ app.run(['$rootScope', '$location', '$localStorage', 'AuthService', 'RouteServic
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
         console.log(toState, toParams);
-        event.preventDefault(); 
         setToken(event, toState, toParams);
         removeToken(event, toState, toParams);
         authenticated(event, toState, toParams);
