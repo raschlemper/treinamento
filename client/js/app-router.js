@@ -12,8 +12,8 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Application
        */
       .state('app', {
-        abstract: true,
-        url: '/',
+        // abstract: true,
+        // url: '',
         templateUrl: 'partials/app/app.html'
       })
 
@@ -21,7 +21,8 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Main
        */
       .state('app.main', {
-        url: '/app'
+        url: '/',
+        template: '<div ui-view></div>'
       })
 
       /**
