@@ -13,7 +13,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        */
       .state('app', {
         abstract: true,
-        // url: '',
+        url: '',
         templateUrl: 'partials/app/app.html'
       })
 
@@ -21,7 +21,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Main
        */
       .state('app.main', {
-        url: '/main',
+        url: 'main',
         template: '<div ui-view></div>'
       })
 
@@ -29,7 +29,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Java
        */
       .state('app.java', {
-        url: '/java',
+        url: 'java',
         template: '<div ui-view></div>'
       })
       .state('app.java.start', {
@@ -47,7 +47,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Authentication
        */
       .state('auth', {
-        url: '/auth',
+        url: 'auth',
         templateUrl: 'partials/auth/auth.html'
       })
 
