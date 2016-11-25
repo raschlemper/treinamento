@@ -6,7 +6,7 @@ app.factory('AuthInterceptor', ['$rootScope', '$q', '$injector',
 	return {
 
         request: function(config) {        
-    		var AuthService = $injector.get('AuthService');        
+    			var AuthService = $injector.get('AuthService');        
             config.headers = config.headers || {};
             if (AuthService.getToken()) {
                 config.headers.Authorization = AuthService.getToken();

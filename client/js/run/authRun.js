@@ -3,6 +3,7 @@ app.run(['$rootScope', 'AuthService', 'RouteService',
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
         if(toParams && toParams.token) { 
+            console.log(toState, toParams);
             AuthService.createToken(toParams.token);
         }
         if(!RouteService.isPublic(toState.name)) {
