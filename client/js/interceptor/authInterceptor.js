@@ -1,7 +1,7 @@
 'use strict';
 
-app.factory('AuthInterceptor', ['$rootScope', '$q', '$injector', '$event',
-	function ($rootScope, $q, $injector, $event) {        
+app.factory('AuthInterceptor', ['$rootScope', '$q', '$injector',
+	function ($rootScope, $q, $injector) {        
 
 	return {
 
