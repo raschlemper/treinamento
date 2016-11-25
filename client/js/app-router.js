@@ -12,6 +12,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Application
        */
       .state('app', {
+        url: '/',
         templateUrl: 'partials/app/app.html'
       })
 
