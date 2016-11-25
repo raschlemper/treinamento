@@ -4,7 +4,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
     function ($stateProvider, $httpProvider, $urlRouterProvider, $locationProvider) {
 
     $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/app');
+    $urlRouterProvider.otherwise('/main');
 
     $stateProvider
 
@@ -21,7 +21,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Main
        */
       .state('app.main', {
-        url: '/',
+        url: '/main',
         template: '<div ui-view></div>'
       })
 

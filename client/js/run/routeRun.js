@@ -11,7 +11,7 @@ app.run(['$rootScope', '$state', function ($rootScope, $state) {
 
     $rootScope.goToIndex = function(event) {
     	  // if(event) { event.preventDefault(); }
-        $rootScope.goTo('app.java.start', null, null);
+        $rootScope.goTo('app.main', null, null);
     };
 
 }]);
