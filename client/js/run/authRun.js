@@ -1,5 +1,5 @@
-app.run(['$rootScope', '$location', 'AuthService', 'RouteService', 
-    function ($rootScope, $location, AuthService, RouteService) {    
+app.run(['$rootScope', '$location', '$localStorage', 'AuthService', 'RouteService', 
+    function ($rootScope, $location, $localStorage, AuthService, RouteService) {    
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
         console.log(toState, toParams);
