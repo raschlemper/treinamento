@@ -6,7 +6,7 @@ app.run(['$rootScope', '$state', function ($rootScope, $state) {
 
     $rootScope.goToLogin = function(event) {
     	  // if(event) { event.preventDefault(); }
-        $rootScope.goTo('auth.login', null, null);
+        $rootScope.goTo('app.auth.login', null, null);
     };
 
     $rootScope.goToIndex = function(event) {
