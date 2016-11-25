@@ -1,8 +1,9 @@
-app.run(['$rootScope', '$location', '$localStorage', 'AuthService', 'RouteService', 
-    function ($rootScope, $location, $localStorage, AuthService, RouteService) {    
+app.run(['$rootScope', '$state', '$location', '$localStorage', 'AuthService', 'RouteService', 
+    function ($rootScope, $state, $location, $localStorage, AuthService, RouteService) {    
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-        console.log(toState, toParams);
+        // console.log(toState, toParams);
+        // event.preventDefault(); 
         setToken(event, toState, toParams);
         removeToken(event, toState, toParams);
         authenticated(event, toState, toParams);
@@ -29,7 +30,8 @@ app.run(['$rootScope', '$location', '$localStorage', 'AuthService', 'RouteServic
                 })
                 .catch(function(e) { 
                     // event.preventDefault();
-                    $rootScope.goToLogin();                   
+                    $rootScope.goToLogin();     
+                    // $state.go('auth.login');              
                 });
         } 
     }

@@ -12,23 +12,23 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Application
        */
       .state('app', {
-        abstract: true,
+        url: '',
         templateUrl: 'partials/app/app.html'
       })
 
       /*
        * Main
-       */
+       */      
       .state('app.main', {
-        url: '/main',
-        template: '<div ui-view></div>'
+        url: '/',
+        template: '<div ui-view></div>',
+        controller: 'AppController'
       })
 
       /**
        * Java
        */
       .state('app.java', {
-        abstract: true,
         url: '/java',
         template: '<div ui-view></div>'
       })

@@ -1,16 +1,15 @@
 app.run(['$rootScope', '$state', function ($rootScope, $state) {    
 
-    $rootScope.goTo = function(state, params) {
-        $state.go(state, params);
+    $rootScope.goTo = function(state, params, options) {
+        $state.go(state, params, options);
     };
 
-    $rootScope.goToLogin = function(event) {
-    	  // if(event) { event.preventDefault(); }
-        $rootScope.goTo('auth.login', null);
+    $rootScope.goToLogin = function() {
+        $rootScope.goTo('auth.login', null, { reload: true });
     };
 
     $rootScope.goToIndex = function() {
-        $rootScope.goTo('app.main', null);
+        $rootScope.goTo('app.main', null, { reload: true });
     };
 
 }]);

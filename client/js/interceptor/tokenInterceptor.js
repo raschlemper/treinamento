@@ -1,39 +1,22 @@
 'use strict';
 
-app.factory('TokenInterceptor', ['$rootScope', '$q', '$localStorage', '$injector', 
-  function ($rootScope, $q, $localStorage, $injector) {
+app.factory('TokenInterceptor', ['$rootScope', '$q',
+  function ($rootScope, $q) {        
 
-    var error = function(rejection) {
-      var AuthService = $injector.get('AuthService');  
-      if (rejection.status === 401) {
-        AuthService.createToken(null);
-        $rootScope.goToLogin();
-      }
-      return $q.reject(rejection);
-    }
-  
   return {
 
-    request: function (config) {     
-      var AuthService = $injector.get('AuthService'); 
-      if (AuthService.getToken()) {
-        config.headers.Authorization = AuthService.getToken();
-      }
+    request: function(config) {  
       return config;
     },
 
-    response: function (rejection) {           
-      error(rejection);
-    },
-
-    responseError: function (rejection) {        
-      error(rejection);
-		}
+    responseError: function (rejection) {   
+      return $q.reject(rejection);
+    }
 
   };
 
 }]);
 
-app.config(['$httpProvider', function ($httpProvider) {
-    $httpProvider.interceptors.push('TokenInterceptor');
-}]);
+// app.config(['$httpProvider', function ($httpProvider) {
+//     $httpProvider.interceptors.push('TokenInterceptor');
+// }]);
