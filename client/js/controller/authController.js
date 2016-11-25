@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('AuthController', ['$rootScope', '$scope', '$state', '$stateParams', 'AuthService',
-  function ($rootScope, $scope, $state, $stateParams, AuthService) {
+app.controller('AuthController', ['$rootScope', '$scope', '$state', '$stateParams', '$event', 'AuthService',
+  function ($rootScope, $scope, $state, $stateParams, $event, AuthService) {
 
 	var init = function () {
 		if($stateParams.strategy == 'google') {
@@ -33,7 +33,7 @@ app.controller('AuthController', ['$rootScope', '$scope', '$state', '$stateParam
 		if (!data.token) return;
 		AuthService.createToken(data.token);
        	AuthService.createUser(data.profile);              	
-    	$rootScope.goToIndex(); 
+    	$rootScope.goToIndex($event); 
 	};
 
   	init();

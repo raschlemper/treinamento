@@ -8,28 +8,27 @@ app.run(['$rootScope', 'AuthService', 'RouteService',
         authenticated(toState, toParams);
     });
 
-    var setToken = function(toState, toParams) {
+    var setToken = function(event, toState, toParams) {
         if(toParams && toParams.token) { 
             AuthService.createToken(toParams.token);
         }
     };
 
-    var hasToken = function(toState, toParams) {
+    var hasToken = function(event, toState, toParams) {
         if(toState && toState.name === "auth.token") { 
-            $rootScope.goToIndex(); 
+            $rootScope.goToIndex(event); 
         }
     };
 
-    var authenticated = function(toState, toParams) {
+    var authenticated = function(event, toState, toParams) {
         if(!RouteService.isPublic(toState.name)) {
             AuthService.isAuthenticated(AuthService.getToken())
                 .then(function(data) {
                     $rootScope.user = AuthService.getUser();
                     $rootScope.goTo(toState, toParams); 
                 })
-                .catch(function(e) {
-                    event.preventDefault(); 
-                    $rootScope.goToLogin();                   
+                .catch(function(e) { 
+                    $rootScope.goToLogin(event);                   
                 });
         }        
     }

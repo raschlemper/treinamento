@@ -4,12 +4,12 @@ app.run(['$rootScope', '$state', function ($rootScope, $state) {
         $state.go(state, params, options);
     };
 
-    $rootScope.goToLogin = function() {
+    $rootScope.goToLogin = function(event) {
     	  event.preventDefault();
         $rootScope.goTo('auth.login', null, { reload: true });
     };
 
-    $rootScope.goToIndex = function() {
+    $rootScope.goToIndex = function(event) {
     	  event.preventDefault();
         $rootScope.goTo('app.java.start', null, { reload: true });
     };

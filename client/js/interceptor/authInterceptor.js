@@ -1,7 +1,7 @@
 'use strict';
 
-app.factory('AuthInterceptor', ['$rootScope', '$q', '$injector',
-	function ($rootScope, $q, $injector) {        
+app.factory('AuthInterceptor', ['$rootScope', '$q', '$injector', '$event',
+	function ($rootScope, $q, $injector, $event) {        
 
 	return {
 
@@ -18,7 +18,7 @@ app.factory('AuthInterceptor', ['$rootScope', '$q', '$injector',
 	      	if (rejection.status === 401) {
     			var AuthService = $injector.get('AuthService');
 		        AuthService.createToken(null);
-	        	$rootScope.goToLogin();
+	        	$rootScope.goToLogin($event);
 			}
 			return $q.reject(rejection);
 		}
