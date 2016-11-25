@@ -40,7 +40,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
       .state('auth', {
         abstract: true,
         url: '/auth',
-        template: '<div ui-view></div>'
+        templateUrl: 'partials/auth/auth.html'
       })
 
       /*
@@ -48,6 +48,19 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        */
       .state('auth.token', {
         url: '/token/:token'
+      })
+
+      /*
+       * Login
+       */
+      .state('auth.login', {
+        url: '/login',
+        templateUrl: 'partials/auth/login.html',
+        controller: 'AuthController'
+      })
+      .state('auth.google', {
+        url: '/login/:strategy',
+        controller: 'AuthController'
       });
 
   }])
