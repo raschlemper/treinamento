@@ -7,17 +7,6 @@ app.factory('AuthService', ['$http', '$localStorage', 'PromiseService',
 
     return {
 
-        login: function(email, password) {
-            return PromiseService.execute(
-                    $http.post(adminUrl + "/auth/login/local/5836d5d41af5c70012d6d58e", 
-                        { email: email, password: password }));
-        },
-
-        loginGoogle: function() {
-            return PromiseService.execute(
-                    $http.get(adminUrl + "/auth/google"));
-        },
-
         isAuthenticated: function() {
             return PromiseService.execute(
                     $http.get(adminUrl + "/auth/authenticated"));

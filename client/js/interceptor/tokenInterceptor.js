@@ -25,3 +25,7 @@ app.factory('TokenInterceptor', ['$rootScope', '$localStorage', '$injector',
   };
 
 }]);
+
+app.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.interceptors.push('TokenInterceptor');
+}]);

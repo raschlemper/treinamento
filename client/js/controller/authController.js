@@ -1,39 +1,21 @@
 'use strict';
 
-app.controller('AuthController', ['$rootScope', '$scope', '$state', '$stateParams', 'AuthService',
-  function ($rootScope, $scope, $state, $stateParams, AuthService) {
+app.controller('AuthController', ['$rootScope', '$scope', '$state', '$stateParams', '$location', 'AuthService',
+  function ($rootScope, $scope, $state, $stateParams, $location, AuthService) {
 
 	var init = function () {
-		if($stateParams.strategy == 'google') {
-			loginGoogle();
-		}
 	};
 
-	$scope.login = function(username, password) {
-		AuthService.login(username, password)
-			.then(function(data) {
-				setReturn(data);        
-			})
-          	.catch(function(e) {
-          		console.log(e);
-			});
+	$scope.getUrl = function(strategy) {
+		var url  = 'https://ras-administration.herokuapp.com/auth/login/';
+		    url += strategy + '/';
+		    url += '5836d5d41af5c70012d6d58e';
+		    url += '?target=' + getTarget();
 	};
 
-	var loginGoogle = function() {
-		AuthService.loginGoogle()
-			.then(function(data) {
-				setReturn(data);
-			})
-          	.catch(function(e) {
-          		console.log(e);
-			});
-	};
 
-	var setReturn = function(data) {
-		if (!data.token) return;
-		AuthService.createToken(data.token);
-       	AuthService.createUser(data.profile);              	
-    	$rootScope.goToIndex(); 
+	var getTarget = function() {
+		$scope.target = $location.protocol() + '://' + $location.host();
 	};
 
   	init();
