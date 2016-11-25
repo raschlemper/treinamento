@@ -5,7 +5,6 @@ app.run(['$rootScope', 'AuthService', 'RouteService',
         console.log(toState, toParams);
         event.preventDefault(); 
         setToken(toState, toParams);
-        hasToken(toState, toParams);
         authenticated(toState, toParams);
     });
 
