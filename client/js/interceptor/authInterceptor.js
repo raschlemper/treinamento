@@ -1,25 +1,15 @@
 'use strict';
 
-app.factory('AuthInterceptor', ['$rootScope', '$q', '$injector',
-	function ($rootScope, $q, $injector) {        
+app.factory('AuthInterceptor', ['$rootScope', '$q',
+	function ($rootScope, $q) {        
 
 	return {
 
-        request: function(config) {        
-    			var AuthService = $injector.get('AuthService');        
-            config.headers = config.headers || {};
-            if (AuthService.getToken()) {
-                config.headers.Authorization = AuthService.getToken();
-            }
-          	return config;
+        request: function(config) {  
+        	return config;
         },
 
-		responseError: function (rejection) {           
-	      	if (rejection.status === 401) {
-    			var AuthService = $injector.get('AuthService');
-		        AuthService.createToken(null);
-	        	$rootScope.goToLogin();
-			}
+		responseError: function (rejection) {   
 			return $q.reject(rejection);
 		}
 
