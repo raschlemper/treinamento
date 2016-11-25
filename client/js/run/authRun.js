@@ -3,9 +3,10 @@ app.run(['$rootScope', 'AuthService', 'RouteService',
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
         console.log(toState, toParams);
-        setToken(event, toState, toParams);
-        hasToken(event, toState, toParams);
-        authenticated(event, toState, toParams);
+        event.preventDefault(); 
+        setToken(toState, toParams);
+        hasToken(toState, toParams);
+        authenticated(toState, toParams);
     });
 
     var setToken = function(event, toState, toParams) {
@@ -16,7 +17,6 @@ app.run(['$rootScope', 'AuthService', 'RouteService',
 
     var hasToken = function(event, toState, toParams) {
         if(toState && toState.name === "auth.token") { 
-            event.preventDefault(); 
             $rootScope.goToIndex(); 
         }
     };
@@ -29,7 +29,6 @@ app.run(['$rootScope', 'AuthService', 'RouteService',
                     $rootScope.goTo(toState, toParams); 
                 })
                 .catch(function(e) { 
-                    event.preventDefault(); 
                     $rootScope.goToLogin();                   
                 });
         }        
