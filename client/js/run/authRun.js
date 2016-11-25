@@ -28,7 +28,7 @@ app.run(['$rootScope', '$location', '$localStorage', 'AuthService', 'RouteServic
                     $rootScope.goTo(toState, toParams); 
                 })
                 .catch(function(e) { 
-                    event.preventDefault();
+                    // event.preventDefault();
                     $rootScope.goToLogin();                   
                 });
         } 
