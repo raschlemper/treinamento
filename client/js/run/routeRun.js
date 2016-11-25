@@ -5,11 +5,11 @@ app.run(['$rootScope', '$state', function ($rootScope, $state) {
     };
 
     $rootScope.goToLogin = function() {
-        $rootScope.goTo('auth.login');
+        $rootScope.goTo('auth.login', null, { reload: true });
     };
 
     $rootScope.goToIndex = function() {
-        $rootScope.goTo('app.java.start');
+        $rootScope.goTo('app.java.start', null, { reload: true });
     };
 
 }]);
