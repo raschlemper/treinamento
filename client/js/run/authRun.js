@@ -17,7 +17,7 @@ app.run(['$rootScope', '$location', '$localStorage', 'AuthService', 'RouteServic
     };
 
     var removeToken = function(event, toState, toParams) {  
-        $location.search('token', undefined);
+        $location.search('token', null);
     };
 
     var authenticated = function(event, toState, toParams) {

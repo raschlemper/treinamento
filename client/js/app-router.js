@@ -3,7 +3,7 @@
 app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationProvider', 
     function ($stateProvider, $httpProvider, $urlRouterProvider, $locationProvider) {
 
-    // $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/404');
 
     $stateProvider
@@ -12,6 +12,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Application
        */
       .state('app', {
+        url: '/',
         templateUrl: 'partials/app/app.html'
       })
 
@@ -19,7 +20,6 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Java
        */
       .state('app.java', {
-        abstract: true,
         url: '/java',
         template: '<div ui-view></div>'
       })
@@ -38,7 +38,6 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Authentication
        */
       .state('auth', {
-        abstract: true,
         url: '/auth',
         templateUrl: 'partials/auth/auth.html'
       })
