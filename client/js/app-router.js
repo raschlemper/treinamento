@@ -12,8 +12,14 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Application
        */
       .state('app', {
-        url: '/',
         templateUrl: 'partials/app/app.html'
+      })
+
+      /*
+       * Token
+       */
+      .state('app.token', {
+        url: '/token/:token'
       })
 
       /**
