@@ -12,7 +12,7 @@ app.run(['$rootScope', '$location', '$localStorage', 'AuthService', 'RouteServic
         var token = $location.search().token || AuthService.getToken();
         if (token) {
             delete $localStorage.token;
-            AuthService.createToken(toParams.token);
+            AuthService.createToken(token);
         }
     };
 
