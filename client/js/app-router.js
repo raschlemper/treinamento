@@ -12,6 +12,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Application
        */
       .state('app', {
+        abstract: true,
         url: '/',
         templateUrl: 'partials/app/app.html'
       })
@@ -37,7 +38,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
       /*
        * Authentication
        */
-      .state('app.auth', {
+      .state('auth', {
         url: '/auth',
         templateUrl: 'partials/auth/auth.html'
       })
@@ -45,7 +46,7 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
       /*
        * Login
        */
-      .state('app.auth.login', {
+      .state('auth.login', {
         url: '/login',
         templateUrl: 'partials/auth/login.html',
         controller: 'AuthController'
