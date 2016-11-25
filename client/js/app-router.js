@@ -12,7 +12,6 @@ app.config(['$stateProvider', '$httpProvider', '$urlRouterProvider', '$locationP
        * Application
        */
       .state('app', {
-        abstract: true,
         templateUrl: 'partials/app/app.html'
       })
 
