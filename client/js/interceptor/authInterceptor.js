@@ -22,10 +22,6 @@ app.factory('AuthInterceptor', ['$rootScope', '$q', '$injector',
       		return config;
         },
 
-	    response: function (rejection) {           
-	      return error(rejection);
-	    },
-
 		responseError: function (rejection) {   
 			return error(rejection);
 		}
@@ -34,6 +30,6 @@ app.factory('AuthInterceptor', ['$rootScope', '$q', '$injector',
 
 }]);
 
-// app.config(['$httpProvider', function ($httpProvider) {
-//     $httpProvider.interceptors.push('AuthInterceptor');
-// }]);
+app.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.interceptors.push('AuthInterceptor');
+}]);

@@ -4,7 +4,7 @@
 
 	<div>
 
-		<form class="form-signin" method="POST" action="getUrl('local')">
+		<form class="form-signin" method="POST" action="{{ actions.local }}">
 		  
 		  	<h2 class="form-signin-heading text-center">TREINAMENTO</h2>
 
@@ -22,7 +22,7 @@
 
 		  	<p class="text-center">
 		  		<small>Você pode se cadastrar pelo <small> 
-		  		<a ng-href="getUrl('google')"><i class="fa fa-google-plus-square fa-spc-sm"></i>Google</a>
+		  		<a ng-href="{{ actions.google }}"><i class="fa fa-google-plus-square fa-spc-sm"></i>Google</a>
 		  	</p>
 
 		</form>
