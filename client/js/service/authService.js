@@ -12,20 +12,17 @@ app.factory('AuthService', ['$http', '$localStorage', 'PromiseService',
                     $http.get(adminUrl + "/auth/authenticated"));
         },
 
+        getUser: function() {
+            return PromiseService.execute(
+                    $http.get(adminUrl + "/auth/token/user"));
+        },
+
         createToken: function(token) {
         	$localStorage.token = token;
         },
 
 		getToken: function() {
         	return $localStorage.token;
-        },
-
-        createUser: function(user) {
-        	$localStorage.user = user;
-        },
-
-		getUser: function() {
-        	return $localStorage.user;
         }
 
     }

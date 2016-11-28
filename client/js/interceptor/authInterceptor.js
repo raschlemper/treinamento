@@ -3,27 +3,23 @@
 app.factory('AuthInterceptor', ['$rootScope', '$q', '$injector',
 	function ($rootScope, $q, $injector) {   
 
-	var error = function(rejection) {
-        var AuthService = $injector.get('AuthService');  
-      	if (rejection.status === 401) {
-       		AuthService.createToken(null);
-        	$rootScope.goToLogin();
-      	}
-      	return $q.reject(rejection);
-    }     
-
 	return {
 
-        request: function(config) { 
-        	var AuthService = $injector.get('AuthService'); 
-      		if (AuthService.getToken()) {
-        		config.headers.Authorization = AuthService.getToken();
-      		}
-      		return config;
-        },
+    request: function(config) { 
+    	var AuthService = $injector.get('AuthService'); 
+  		if (AuthService.getToken()) {
+    		config.headers.Authorization = AuthService.getToken();
+  		}
+  		return config;
+    },
 
 		responseError: function (rejection) {   
-			return error(rejection);
+		  var AuthService = $injector.get('AuthService');  
+      if (rejection.status === 401) {
+        AuthService.createToken(null);
+        $rootScope.goToLogin();
+      }
+      return $q.reject(rejection);
 		}
 
 	};
