@@ -93,7 +93,8 @@ body {
 }
 
 .navbar-top .navbar-nav > li > a > img {    
-    margin-right: 10px;
+    margin: -10px 10px -10px;
+    max-height: 30px;
 }
 
 .navbar-top .navbar-nav > li > a:hover,

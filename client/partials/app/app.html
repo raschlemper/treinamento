@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <img src="img/profile.jpg" alt="" ng-if="$root.user.image">{{ $root.user.name }}
+            <img class="img-circle" ng-src="{{$root.user.image}}" alt="" ng-if="$root.user.image">{{ $root.user.name }}
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
