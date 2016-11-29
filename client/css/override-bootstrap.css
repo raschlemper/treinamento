@@ -1,0 +1,35 @@
+.container {
+    width: 100%;
+    padding: 0 30px;
+}
+
+.navbar-header {
+    width: 200px;
+}
+
+.navbar-header > a {
+    width: 100%;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #12A4F4;
+    border-color: #0b95e0;
+}
+
+.btn > i.fa {
+    padding-right: 5px;
+}
+
+.form-control {
+    border-radius: 0; 
+    -webkit-box-shadow: none; 
+    box-shadow: none; 
+    -webkit-transition: none 
+    -o-transition: none;
+     transition: none; 
+}
