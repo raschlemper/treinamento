@@ -2,8 +2,6 @@ app.run(['$rootScope', '$state', '$location', '$localStorage', 'AuthService', 'R
     function ($rootScope, $state, $location, $localStorage, AuthService, RouteService) {    
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-        // console.log(toState, toParams);
-        // event.preventDefault(); 
         setToken(event, toState, toParams);
         removeToken(event, toState, toParams);
         authenticated(event, toState, toParams);
@@ -11,10 +9,7 @@ app.run(['$rootScope', '$state', '$location', '$localStorage', 'AuthService', 'R
 
     var setToken = function(event, toState, toParams) {
         var token = $location.search().token || AuthService.getToken();
-        if (token) {
-            delete $localStorage.token;
-            AuthService.createToken(token);
-        }
+        if (token) { AuthService.createToken(token); }
     };
 
     var removeToken = function(event, toState, toParams) {  
@@ -29,11 +24,15 @@ app.run(['$rootScope', '$state', '$location', '$localStorage', 'AuthService', 'R
                     $rootScope.goTo(toState, toParams); 
                 })
                 .catch(function(e) { 
-                    // event.preventDefault();
-                    $rootScope.goToLogin();     
-                    // $state.go('auth.login');              
+                    AuthService.createToken(null);
+                    $rootScope.goToLogin();               
                 });
         } 
-    }
+    };
+
+    $rootScope.logout = function () {
+        AuthService.createToken(null);
+        $rootScope.goToLogin();  
+    };
 
 }]);
