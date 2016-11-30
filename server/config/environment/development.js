@@ -7,7 +7,7 @@ module.exports = {
   ip:       '127.0.0.1',
 
   // Server port
-  port:     4000,
+  port:     3000,
   mongo: {
     uri: 'mongodb://localhost/protuario'
   }

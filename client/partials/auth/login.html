@@ -7,6 +7,10 @@
 		<form class="form-signin" method="POST" action="{{ actions.local }}">
 		  
 		  	<h2 class="form-signin-heading text-center">TREINAMENTO</h2>
+		  	
+		  	<div class="text-center" ng-if="error">
+		  		<small class="text-danger">{{ error }}</small>
+		  	</div>
 
 		  	<br/>
 		  

@@ -7,6 +7,7 @@ app.controller('AuthController', ['$rootScope', '$scope', '$state', '$stateParam
 		$scope.actions = {};
 		$scope.actions.local = getUrl('local');
 		$scope.actions.google = getUrl('google');
+		$scope.error = getError($location.search().error);
 	};
 
 	var getUrl = function(strategy) {
@@ -20,6 +21,19 @@ app.controller('AuthController', ['$rootScope', '$scope', '$state', '$stateParam
 	var getTarget = function() {
 		return $location.protocol() + '://' + $location.host() + ':' + $location.port();
 	};
+
+	var getError = function(error) {
+		switch(error) {
+		    case 'APPLICATION_INCORRECT':
+		        return "Problemas com aplicação.";
+		    case 'EMAIL_NOT_REGISTERED':
+		        return "Email não registrado.";
+		    case 'PASSWORD_NOT_CORRECT':
+		        return "Senha incorreta.";
+		    case 'SYSTEM_NOT_AUTHORIZED':
+		        return "Sistema sem permissão.";
+		}
+	};	
 
   	init();
 
