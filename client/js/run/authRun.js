@@ -1,37 +1,79 @@
-app.run(['$rootScope', 'AuthService', 'RouteService', 
-    function ($rootScope, AuthService, RouteService) {    
+app.run(['$rootScope', '$state', '$location', '$localStorage', 'AuthService', 'RouteService', 
+    function ($rootScope, $state, $location, $localStorage, AuthService, RouteService) {    
 
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-        console.log(toState, toParams);
-        event.preventDefault(); 
-        setToken(toState, toParams);
-        hasToken(toState, toParams);
-        authenticated(toState, toParams);
+    var error = {}; 
+    var token = null;
+
+    $rootScope.$on('$stateChangeStart', 
+        function(event, toState, toParams, fromState, fromParams) {
+        getError(event, toState, toParams);
+        getToken(event, toState, toParams);
+        setToken(event, toState, toParams);
+        authenticated(event, toState, toParams);
     });
 
-    var setToken = function(event, toState, toParams) {
-        if(toParams && toParams.token) { 
-            AuthService.createToken(toParams.token);
+    $rootScope.$on('$stateChangeSuccess', 
+        function(event, toState, toParams, fromState, fromParams) {
+        setError(event, toState, toParams);        
+    });
+
+    var getError = function(event, toState, toParams) {
+        error = $location.search().error;
+        if (error) {             
+            removeToken(event, toState, toParams);
+        }         
+    };
+
+    var setError = function(event, toState, toParams) {
+        if (error) {             
+            removeToken(event, toState, toParams);
+            $location.search('error', error);             
+            if(!RouteService.isPublic(toState.name)) {
+                $rootScope.goToLogin(); 
+            }
         }
     };
 
-    var hasToken = function(event, toState, toParams) {
-        if(toState && toState.name === "auth.token") { 
-            $rootScope.goToIndex(); 
-        }
+    var getToken = function(event, toState, toParams) {
+        token = $location.search().token || AuthService.getToken();
+        if (!token) {  
+            if(!RouteService.isPublic(toState.name)) {
+                event.preventDefault();
+                $rootScope.goToLogin(); 
+            }
+        }         
+    };
+
+    var setToken = function(event, toState, toParams) {
+        removeToken(event, toState, toParams);
+        if (token) { AuthService.createToken(token); }
+    };
+
+    var removeToken = function(event, toState, toParams) {  
+        $location.search('token', null);
+    };
+
+    var removeError = function(event, toState, toParams) {  
+        $location.search('error', null);
     };
 
     var authenticated = function(event, toState, toParams) {
         if(!RouteService.isPublic(toState.name)) {
-            AuthService.isAuthenticated(AuthService.getToken())
+            AuthService.isAuthenticated()
                 .then(function(data) {
-                    $rootScope.user = AuthService.getUser();
+                    $rootScope.user = data;
                     $rootScope.goTo(toState, toParams); 
                 })
                 .catch(function(e) { 
-                    $rootScope.goToLogin();                   
+                    AuthService.createToken(null);
+                    $rootScope.goToLogin();               
                 });
-        }        
-    }
+        } 
+    };
+
+    $rootScope.logout = function () {
+        AuthService.createToken(null);
+        $rootScope.goToLogin();  
+    };
 
 }]);

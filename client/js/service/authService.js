@@ -29,7 +29,7 @@ app.factory('AuthService', ['$http', '$localStorage', 'PromiseService',
         getToken: function() {
             return $localStorage.token;
         }
-
+        
     }
 
 }]);

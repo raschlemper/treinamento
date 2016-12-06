@@ -1,40 +1,39 @@
 'use strict';
 
-app.controller('AuthController', ['$rootScope', '$scope', '$state', '$stateParams', 'AuthService',
-  function ($rootScope, $scope, $state, $stateParams, AuthService) {
+app.controller('AuthController', ['$rootScope', '$scope', '$state', '$stateParams', '$location', '$sce', 'AuthService',
+  function ($rootScope, $scope, $state, $stateParams, $location, $sce, AuthService) {
 
 	var init = function () {
-		if($stateParams.strategy == 'google') {
-			loginGoogle();
+		$scope.actions = {};
+		$scope.actions.local = getUrl('local');
+		$scope.actions.google = getUrl('google');
+		$scope.error = getError($location.search().error);
+	};
+
+	var getUrl = function(strategy) {
+		var url  = 'https://ras-administration.herokuapp.com/auth/login/';
+		    url += strategy + '/';
+		    url += AuthService.getSystem();
+		    url += '?target=' + getTarget();
+		return $sce.trustAsResourceUrl(url);
+	};
+
+	var getTarget = function() {
+		return $location.protocol() + '://' + $location.host() + ':' + $location.port();
+	};
+
+	var getError = function(error) {
+		switch(error) {
+		    case 'APPLICATION_INCORRECT':
+		        return "Problemas com aplicação.";
+		    case 'EMAIL_NOT_REGISTERED':
+		        return "Email não registrado.";
+		    case 'PASSWORD_NOT_CORRECT':
+		        return "Senha incorreta.";
+		    case 'SYSTEM_NOT_AUTHORIZED':
+		        return "Sistema sem permissão.";
 		}
-	};
-
-	$scope.login = function(username, password) {
-		AuthService.login(username, password)
-			.then(function(data) {
-				setReturn(data);        
-			})
-          	.catch(function(e) {
-          		console.log(e);
-			});
-	};
-
-	var loginGoogle = function() {
-		AuthService.loginGoogle()
-			.then(function(data) {
-				setReturn(data);
-			})
-          	.catch(function(e) {
-          		console.log(e);
-			});
-	};
-
-	var setReturn = function(data) {
-		if (!data.token) return;
-		AuthService.createToken(data.token);
-       	AuthService.createUser(data.profile);              	
-    	$rootScope.goToIndex(); 
-	};
+	};	
 
   	init();
 

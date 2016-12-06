@@ -89,7 +89,12 @@ body {
 }
 
 .navbar-top .navbar-nav > li > a {    
-    color: #A0ABBD;
+    color: #FFF;
+}
+
+.navbar-top .navbar-nav > li > a > img {    
+    margin: -10px 10px -10px;
+    max-height: 30px;
 }
 
 .navbar-top .navbar-nav > li > a:hover,
