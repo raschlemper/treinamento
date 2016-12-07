@@ -3,7 +3,7 @@
 app.factory('AuthService', ['$http', '$localStorage', 'PromiseService', 
     function($http, $localStorage, PromiseService) {
 
-    var adminUrl = 'https://ras-administration.herokuapp.com';
+    var adminUrl = 'https://prosoft-admin.herokuapp.com';
     var system = '5836d5d41af5c70012d6d58e';
 
     return {
