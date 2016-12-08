@@ -13,6 +13,10 @@ app.factory('AuthService', ['$http', '$localStorage', 'PromiseService',
                     $http.get(adminUrl + "/auth/authenticated/" + system));
         },
 
+        getUrlAdmin: function() {
+            return adminUrl;
+        },
+
         getSystem: function() {
             return system;
         },
